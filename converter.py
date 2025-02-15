@@ -54,6 +54,7 @@ def main():
     import os
 pdf_path = os.getenv("PDF_PATH", "arquivo_padrao.pdf")  # Usa variável de ambiente no Railway
     output_folder = "temp_images"
+
     output_docx = input("Digite o caminho completo para salvar o arquivo Word (ex: C:\\Projetos\\meuarquivo.docx): ")
     
     os.makedirs(output_folder, exist_ok=True)
