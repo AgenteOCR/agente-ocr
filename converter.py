@@ -50,13 +50,11 @@ def clean_temp_folder(output_folder):
             print(f"Erro ao deletar {file_path}: {e}")
 
 def main():
-    # Solicitar entrada do usuário
-    import os
-pdf_path = os.getenv("PDF_PATH", "arquivo_padrao.pdf")  # Usa variável de ambiente no Railway
+    # Solicitar entrada do usuário via variável de ambiente
+    pdf_path = os.getenv("PDF_PATH", "arquivo_padrao.pdf")
     output_folder = "temp_images"
+    output_docx = os.getenv("OUTPUT_DOCX", "resultado.docx")
 
-    output_docx = input("Digite o caminho completo para salvar o arquivo Word (ex: C:\\Projetos\\meuarquivo.docx): ")
-    
     os.makedirs(output_folder, exist_ok=True)
     
     print("Convertendo PDF em imagens...")
@@ -76,21 +74,3 @@ pdf_path = os.getenv("PDF_PATH", "arquivo_padrao.pdf")  # Usa variável de ambie
 # Executa o programa
 if __name__ == "__main__":
     main()
-
-# Instruções de instalação e uso:
-# 1. Abra o Prompt de Comando (CMD) no Windows (Win + R, digite cmd e pressione Enter).
-# 2. Instale as bibliotecas necessárias digitando:
-#    pip install pytesseract pdf2image python-docx
-# 3. Baixe e instale o Tesseract OCR:
-#    Link: https://github.com/UB-Mannheim/tesseract/wiki
-#    Durante a instalação, anote o caminho de instalação (exemplo: C:\Program Files\Tesseract-OCR\tesseract.exe)
-# 4. Baixe o arquivo de idioma português (se necessário):
-#    Link: https://github.com/tesseract-ocr/tessdata_best/raw/main/por.traineddata
-#    Copie para: C:\Arquivos de Programas\Tesseract-OCR\tessdata
-# 5. Adicione a variável de ambiente TESSDATA_PREFIX no Windows:
-#    Nome: TESSDATA_PREFIX
-#    Valor: C:\Arquivos de Programas\Tesseract-OCR\
-# 6. Verifique a instalação rodando no CMD:
-#    tesseract --list-langs
-# 7. Rode o script para converter o PDF em Word:
-#    python converter.py
